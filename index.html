@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+
+<head>
+  <title> SlickWeb - Azlan Ali Khan's Site </title>
+  <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.8/dist/htmx.min.js"
+    integrity="sha384-/TgkGk7p307TH7EXJDuUlgG3Ce1UVolAOFopFekQkkXihi5u/6OCvVKyz1W+idaz"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="styles/main.css">
+
+</head>
+
+<body>
+
+  <div class="htmx-indicator" id="loader"></div>
+
+  <nav></nav>
+
+  <h1> Azlan Ali Khan - Slick User </h1>
+  <h2> Cyber Security Student, Hobbyist Game Developer </h2>
+
+  <div id="sections">
+    <!-- Socials Section -->
+    <div hx-get="partials/socials.html" hx-trigger="load" hx-indicator="#loader">
+    </div>
+
+    <!-- Education Section -->
+    <div hx-get="partials/education.html" hx-trigger="load" hx-indicator="#loader">
+    </div>
+
+    <!-- Skills Section -->
+    <div hx-get="partials/skills.html" hx-trigger="load" hx-indicator="#loader">
+    </div>
+
+    <!-- Projects Section -->
+    <div hx-get="partials/projects.html" hx-trigger="load" hx-indicator="#loader">
+    </div>
+
+    <!-- Certifications Section -->
+    <div hx-get="partials/certifications.html" hx-trigger="load" hx-indicator="#loader">
+    </div>
+
+    <!-- CTF & Competitions -->
+    <div hx-get="/partials/ctfs.html" hx-trigger="load" hx-indicator="#loader"></div>
+
+    <!-- CV -->
+    <div class="cv-box">
+      <p> view my CV </p>
+      <button class="cv-btn" hx-get="/partials/cv-modal.html" hx-target="body" hx-swap="beforeend" class="cv-button">
+        Open CV -> </button>
+    </div>
+  </div>
+
+</body>
+
+</html>
