@@ -8,6 +8,7 @@ const app = new Hono<{ Bindings: Env }>()
 // Notes data — add entries here as you write
 const notes: { title: string, date: string, tag: string, url: string }[] = [
   { title: "Example 1", date: "2026-04-10", tag: "writeup", url: "help" },
+  { title: "Example 2", date: "2026-4-23", tag: "writeup", url: "test" },
 ]
 
 function shell(page: string, preload: string = '') {
