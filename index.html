@@ -2,54 +2,49 @@
 <html>
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> SlickWeb - Azlan Ali Khan's Site </title>
   <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.8/dist/htmx.min.js"
     integrity="sha384-/TgkGk7p307TH7EXJDuUlgG3Ce1UVolAOFopFekQkkXihi5u/6OCvVKyz1W+idaz"
     crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="styles/main.css">
-
 </head>
 
 <body>
 
   <div class="htmx-indicator" id="loader"></div>
 
-  <nav></nav>
+  <nav>
+    <span class="nav-brand">SLICK USER</span>
+    <ul class="nav-links">
+      <li><a href="/" hx-get="/pages/about.html" hx-target="#content" hx-push-url="/" hx-indicator="#loader"
+          class="nav-active">About</a></li>
+      <li><a href="/notes" hx-get="/pages/notes.html" hx-target="#content" hx-push-url="/notes"
+          hx-indicator="#loader">Notes</a></li>
+    </ul>
+  </nav>
 
-  <h1> Azlan Ali Khan - Slick User </h1>
-  <h2> Cyber Security Student, Hobbyist Game Developer </h2>
-
-  <div id="sections">
-    <!-- Socials Section -->
-    <div hx-get="partials/socials.html" hx-trigger="load" hx-indicator="#loader">
+  <main>
+    <div id="content" hx-get="/pages/about.html" hx-trigger="load" hx-indicator="#loader">
     </div>
+  </main>
 
-    <!-- Education Section -->
-    <div hx-get="partials/education.html" hx-trigger="load" hx-indicator="#loader">
-    </div>
+  <footer>
+    <p>&copy; <span id="year"></span> Azlan Ali Khan. All rights reserved.</p>
+  </footer>
 
-    <!-- Skills Section -->
-    <div hx-get="partials/skills.html" hx-trigger="load" hx-indicator="#loader">
-    </div>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear()
 
-    <!-- Projects Section -->
-    <div hx-get="partials/projects.html" hx-trigger="load" hx-indicator="#loader">
-    </div>
-
-    <!-- Certifications Section -->
-    <div hx-get="partials/certifications.html" hx-trigger="load" hx-indicator="#loader">
-    </div>
-
-    <!-- CTF & Competitions -->
-    <div hx-get="/partials/ctfs.html" hx-trigger="load" hx-indicator="#loader"></div>
-
-    <!-- CV -->
-    <div class="cv-box">
-      <p> view my CV </p>
-      <button class="cv-btn" hx-get="/partials/cv-modal.html" hx-target="body" hx-swap="beforeend" class="cv-button">
-        Open CV -> </button>
-    </div>
-  </div>
+    // Keep nav active state in sync
+    document.body.addEventListener('htmx:pushedIntoHistory', () => {
+      const path = window.location.pathname
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.classList.toggle('nav-active', a.getAttribute('hx-push-url') === path)
+      })
+    })
+  </script>
 
 </body>
 

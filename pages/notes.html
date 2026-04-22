@@ -1,0 +1,131 @@
+<div class="notes-header">
+  <h1>Notes</h1>
+  <p>Writeups, devlogs, and writings.</p>
+</div>
+
+<div class="notes-tabs">
+  <button class="notes-tab" hx-get="/notes/filter?tag=all" hx-target="#notes-list" hx-swap="innerHTML">All</button>
+  <button class="notes-tab" hx-get="/notes/filter?tag=writeup" hx-target="#notes-list"
+    hx-swap="innerHTML">Writeups</button>
+  <button class="notes-tab" hx-get="/notes/filter?tag=devlog" hx-target="#notes-list"
+    hx-swap="innerHTML">Devlogs</button>
+  <button class="notes-tab" hx-get="/notes/filter?tag=writing" hx-target="#notes-list"
+    hx-swap="innerHTML">Writing</button>
+</div>
+
+<div id="notes-list"> </div>
+
+<style>
+  .notes-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .notes-header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .notes-header p {
+    font-size: 0.8rem;
+    color: #7A7568;
+  }
+
+  .notes-tabs {
+    display: flex;
+    gap: 0.3rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #D8D3C8;
+    padding-bottom: 0;
+  }
+
+  .notes-tab {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.85rem;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: #7A7568;
+    font-family: inherit;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .notes-tab:hover {
+    color: #1C1A16;
+  }
+
+  .notes-tab.active {
+    color: #1C1A16;
+    border-bottom-color: #1C1A16;
+  }
+
+  .notes-empty {
+    padding: 3rem 0;
+    font-size: 0.8rem;
+    color: #7A7568;
+    border: 1px dashed #D8D3C8;
+    text-align: center;
+  }
+
+  .notes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .note-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid #EFECE5;
+    gap: 1rem;
+  }
+
+  .note-row:last-child {
+    border-bottom: none;
+  }
+
+  .note-title {
+    font-size: 0.88rem;
+    color: #1C1A16;
+    text-decoration: none;
+  }
+
+  .note-title:hover {
+    text-decoration: underline;
+  }
+
+  .note-meta {
+    font-size: 0.68rem;
+    color: #7A7568;
+    white-space: nowrap;
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .note-tag {
+    font-size: 0.62rem;
+    padding: 0.1rem 0.45rem;
+    border-radius: 3px;
+  }
+
+  .tag-writeup {
+    background: #FCEBEB;
+    color: #791F1F;
+  }
+
+  .tag-devlog {
+    background: #EAF3DE;
+    color: #27500A;
+  }
+
+  .tag-writing {
+    background: #E6F1FB;
+    color: #0C447C;
+  }
+</style>
