@@ -4,6 +4,7 @@
   "type": "module",
   "private": true,
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260422.1",
     "@types/bun": "latest"
   },
   "peerDependencies": {
