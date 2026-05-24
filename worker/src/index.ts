@@ -10,7 +10,7 @@ const notes: { title: string, date: string, tag: string, url: string }[] = [
   { title: "Example 1", date: "2026-04-10", tag: "writeup", url: "help" },
   { title: "Example 2", date: "2026-4-23", tag: "writeup", url: "test" },
   { title: "Pico CTF", date: "2026-4-24", tag: "writeup", url: "PicoCTF" },
-  { title: "PWN College", date: "2026-4-24", tag: "writeup", url: "PWN College" },
+  { title: "PWN College", date: "2026-4-24", tag: "writeup", url: "pwn-college" },
 ]
 
 function shell(page: string, preload: string = '') {
@@ -97,6 +97,14 @@ function noteShell(title: string, content: string, slug: string): string {
   `
 }
 
+
+function obsidianToMd(text: string, slug: string): string {
+  // convert ![[image.png]] to the appropriate image
+  return text.replace(/!\[\[(.+?)\]\]/g, (_, filename) => {
+    return `![${filename}](/assets/notes/${slug}/${filename})`
+  })
+}
+
 // Note route — reads markdown from assets
 app.get('/note/:slug', async (c) => {
   const slug = c.req.param('slug')
@@ -104,7 +112,9 @@ app.get('/note/:slug', async (c) => {
   const res = await c.env.ASSETS.fetch(new Request(assetUrl))
   if (!res.ok) return c.html(shell('/pages/notes.html'), 404)
   const text = await res.text()
-  const content = await marked(text) as string
+  const processed = obsidianToMd(text, slug)
+  const content = await marked(processed) as string
+  // const content = await marked(text) as string
   const title = slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
 
   if (c.req.header('HX-Request')) {
