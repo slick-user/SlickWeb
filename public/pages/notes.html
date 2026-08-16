@@ -3,17 +3,21 @@
   <p>Writeups, devlogs, and writings.</p>
 </div>
 
-<div class="notes-tabs">
-  <button class="notes-tab" hx-get="/notes/filter?tag=all" hx-target="#notes-list" hx-swap="innerHTML">All</button>
-  <button class="notes-tab" hx-get="/notes/filter?tag=writeup" hx-target="#notes-list"
-    hx-swap="innerHTML">Writeups</button>
-  <button class="notes-tab" hx-get="/notes/filter?tag=devlog" hx-target="#notes-list"
-    hx-swap="innerHTML">Devlogs</button>
-  <button class="notes-tab" hx-get="/notes/filter?tag=writing" hx-target="#notes-list"
-    hx-swap="innerHTML">Writing</button>
+<div class="notes-search">
+  <input type="search" name="q" placeholder="Search notes…"
+    hx-get="/notes/search"
+    hx-trigger="keyup changed delay:200ms"
+    hx-target="#notes-list"
+    hx-include="this">
 </div>
 
-<div id="notes-list"> </div>
+<div class="notes-tabs">
+  <button class="notes-tab active" hx-get="/notes/filter?tag=all" hx-target="#notes-list" hx-swap="innerHTML">All</button>
+  <button class="notes-tab" hx-get="/notes/filter?tag=writeup" hx-target="#notes-list"
+    hx-swap="innerHTML">Writeups</button>
+</div>
+
+<div id="notes-list" hx-get="/notes/filter?tag=all&category=all" hx-trigger="load" hx-swap="innerHTML"></div>
 
 <style>
   .notes-header {
@@ -28,6 +32,32 @@
   .notes-header p {
     font-size: 0.8rem;
     color: #7A7568;
+  }
+
+  .notes-search {
+    margin-bottom: 1.25rem;
+    max-width: 320px;
+  }
+
+  .notes-search input {
+    width: 100%;
+    font-family: inherit;
+    font-size: 0.8rem;
+    color: #1C1A16;
+    background: #fff;
+    border: 1px solid #D8D3C8;
+    border-radius: 4px;
+    padding: 0.45rem 0.7rem;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .notes-search input:focus {
+    border-color: #2D5016;
+  }
+
+  .notes-search input::placeholder {
+    color: #9A948A;
   }
 
   .notes-tabs {
