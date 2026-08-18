@@ -1,3 +1,10 @@
+---
+title: intercepting Web
+date: 2026-05-26
+tag: writeup
+category: pwn-college
+---
+
 # Web Security (Intro to Cyber Security) 
 
 ## Shell Injections

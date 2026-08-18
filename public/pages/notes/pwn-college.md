@@ -1,3 +1,10 @@
+---
+title: PWN College
+date: 2026-04-24
+tag: writeup
+category: pwn-college
+---
+
 # PWN (Intro to Cyber Security)
 
 ## Your first overflow

@@ -1,3 +1,9 @@
+---
+title: Pico CTF
+date: 2026-04-24
+tag: writeup
+category: picoctf
+---
 
 # Input Injection
 

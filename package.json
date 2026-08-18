@@ -3,6 +3,12 @@
   "module": "index.ts",
   "type": "module",
   "private": true,
+  "scripts": {
+    "build:notes": "bun run scripts/build-notes.ts",
+    "new:note": "bun run scripts/new-note.ts",
+    "dev": "bun run build:notes && cd worker && wrangler dev",
+    "deploy": "bun run build:notes && cd worker && wrangler deploy"
+  },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20260422.1",
     "@types/bun": "latest"

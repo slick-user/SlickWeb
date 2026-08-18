@@ -1,3 +1,10 @@
+---
+title: Silly Shenanigans
+date: 2026-05-26
+tag: writeup
+category: pwn-college
+---
+
 # Sniffing Input
 
 `.bashrc' is a file that is used for bash terminal personalization. On startup we will use the configuration file to trigger a malicious payload. By hijacking an existing command called flag_checker to read and print the password.

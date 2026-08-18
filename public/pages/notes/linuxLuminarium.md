@@ -1,3 +1,10 @@
+---
+title: Linux Luminarium
+date: 2026-04-24
+tag: writeup
+category: pwn-college
+---
+
 # Linux Luminarium Final Challenges 
 
 ## The Fork Bomb
