@@ -21,6 +21,13 @@
     "url": "sillyShenanigans"
   },
   {
+    "title": "Introduction to Cryptography",
+    "date": "2026-04-24",
+    "tag": "writeup",
+    "category": "pwn-college",
+    "url": "pwn-crypto"
+  },
+  {
     "title": "Linux Luminarium",
     "date": "2026-04-24",
     "tag": "writeup",
